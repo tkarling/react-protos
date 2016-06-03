@@ -1,5 +1,7 @@
+import './ItemList.scss';
+
 import { connect } from 'react-redux';
-// import { toggleTodo } from '../actions';
+import { deleteItem } from '../../actions';
 import ItemList from './ItemList';
 
 const getItems = (items, filter) => {
@@ -30,12 +32,16 @@ const mapDispatchToProps = (dispatch) => {
             console.log('onItemClick');
             // dispatch(toggleTodo(id));
         },
+        onItemDelete: (id) => {
+            console.log('onItemDelete');
+            dispatch(deleteItem(id));
+        },
     };
 };
 
-const ItemView = connect(
+const ItemListView = connect(
     mapStateToProps,
     mapDispatchToProps
 )(ItemList);
 
-export default ItemView;
+export default ItemListView;

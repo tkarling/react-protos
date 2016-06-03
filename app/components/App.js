@@ -1,7 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 // import Footer from './Footer';
 // import AddTodo from './AddTodo';
-import ItemView from './itemList/ItemView';
+import ItemListView from './itemList/ItemListView';
 
 // const App = () => (
 //     <div>
@@ -13,8 +14,7 @@ import ItemView from './itemList/ItemView';
 
 const App = () => (
     <div>
-        Hello from App2
-        <ItemView />
+        <ItemListView />
     </div>
 );
 

@@ -1,16 +1,24 @@
-import React, { PropTypes } from 'react';
+import './ItemList.scss';
+
+import React, {PropTypes} from 'react';
 import Item from './Item';
 
-const ItemList = ({ items, onItemClick }) => (
-    <ul>
-        {items.map(item =>
-            <Item
-                key={item.id}
-                {...item}
-                onClick={() => onItemClick(item.id)}
-            />
-        )}
-    </ul>
+const ItemList = ({items, onItemClick, onItemDelete}) => (
+    <div className="rp-item-list">
+        <h4> Table title</h4>
+        <table className="table">
+            <tbody>
+            {items.map(item =>
+                <Item
+                    key={item.id}
+                    {...item}
+                    onClick={() => onItemClick(item.id)}
+                    onDelete={() => onItemDelete(item.id)}
+                />
+            )}
+            </tbody>
+        </table>
+    </div>
 );
 
 ItemList.propTypes = {

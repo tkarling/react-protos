@@ -48,10 +48,10 @@ module.exports = {
                 test: /\.html$/,
                 loader: "file?name=[name].[ext]",
             },
-            // {
-            //     test: /\.(css|scss)/,
-            //     loaders: ['style', 'css', 'postcss', 'sass']
-            // }
+            {
+                test: /\.(css|scss)/,
+                loaders: ['style', 'css', 'postcss', 'sass']
+            }
 
         ],
 
