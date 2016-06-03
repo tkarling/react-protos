@@ -1,4 +1,4 @@
-const todo = (state, action) => {
+const item = (state, action) => {
     switch (action.type) {
         case 'ADD_TODO':
             return {
@@ -19,20 +19,20 @@ const todo = (state, action) => {
     }
 };
 
-const todos = (state = [], action) => {
+const items = (state = [{id: '1', abbr: 'moi', text: 'moi vaan', completed: false}], action) => {
     switch (action.type) {
         case 'ADD_TODO':
             return [
                 ...state,
-                todo(undefined, action),
+                item(undefined, action),
             ];
         case 'TOGGLE_TODO':
             return state.map(t =>
-                todo(t, action)
+                item(t, action)
             );
         default:
             return state;
     }
 };
 
-export default todos;
+export default items;
