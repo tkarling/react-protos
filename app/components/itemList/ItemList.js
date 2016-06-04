@@ -2,11 +2,13 @@ import './ItemList.scss';
 
 import React, {PropTypes} from 'react';
 import Item from './Item';
+import ItemInput from './ItemInput';
 
 const ItemList = ({items, onItemClick, onItemDelete}) => (
     <div className="rp-item-list">
+        <ItemInput />
         <h4> Table title</h4>
-        <table className="table">
+        <table className="table rp-item-table">
             <tbody>
             {items.map(item =>
                 <Item

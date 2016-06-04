@@ -1,12 +1,40 @@
+@mixin calc($property, $expression) {
+  #{$property}: -webkit-calc(#{$expression});
+  #{$property}: calc(#{$expression});
+}
+
+$rp-padding: 6px;
+$color-info: #56bfe0;
+
 .rp-item-list {
-  table {
+  @include calc(width, "100% - 10*#{$rp-padding}");
+  margin: 2*$rp-padding auto;
+
+  h4 {
+    margin-top: 2*$rp-padding;
+    font-size: 120%;
+  }
+
+  .rp-item-table {
     border-top: 1px solid gray;
   }
 
   tr, td {
-      border-width: 0px;
+    border-width: 0px;
     padding-top: 0px
   }
 
-  margin: 12px;
+  td {
+    padding: $rp-padding;
+  }
+
+  .square {
+    color: $color-info;
+  }
+
+  strong {
+    text-transform: uppercase;
+  }
+
 }
+

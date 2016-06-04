@@ -3,6 +3,7 @@ const item = (state, action) => {
         case 'ADD_ITEM':
             return {
                 id: action.id,
+                abbr: action.abbr,
                 text: action.text,
                 completed: false,
             };
@@ -20,9 +21,9 @@ const item = (state, action) => {
 };
 
 const demoData = [
-    {id: '1', abbr: 'MOI', text: 'Moi vaan', completed: false},
-    {id: '2', abbr: 'HEI', text: 'Hei vaan', completed: false},
-    {id: '3', abbr: 'NIIN', text: 'Niin vaan', completed: false}
+    {id: '100', abbr: 'MOI', text: 'Moi vaan', completed: false},
+    {id: '200', abbr: 'HEI', text: 'Hei vaan', completed: false},
+    {id: '300', abbr: 'NIIN', text: 'Niin vaan', completed: false}
 ];
 
 
