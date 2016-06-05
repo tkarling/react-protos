@@ -1,0 +1,4 @@
+.demo-graph{
+    @import "../../app.partial";
+    @include page-indent();
+}

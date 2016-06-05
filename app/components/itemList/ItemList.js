@@ -30,6 +30,7 @@ ItemList.propTypes = {
         text: PropTypes.string.isRequired,
     }).isRequired).isRequired,
     onItemClick: PropTypes.func.isRequired,
+    onItemDelete: PropTypes.func.isRequired,
 };
 
 export default ItemList;

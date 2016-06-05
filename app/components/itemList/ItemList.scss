@@ -1,14 +1,6 @@
-@mixin calc($property, $expression) {
-  #{$property}: -webkit-calc(#{$expression});
-  #{$property}: calc(#{$expression});
-}
-
-$rp-padding: 6px;
-$color-info: #56bfe0;
-
 .rp-item-list {
-  @include calc(width, "100% - 10*#{$rp-padding}");
-  margin: 2*$rp-padding auto;
+  @import "../../app.partial";
+  @include page-indent();
 
   h4 {
     margin-top: 2*$rp-padding;
@@ -25,6 +17,10 @@ $color-info: #56bfe0;
   }
 
   td {
+    padding: $rp-padding 2*$rp-padding $rp-padding 0px;
+  }
+
+  .rp-item-table td{
     padding: $rp-padding;
   }
 
@@ -37,4 +33,3 @@ $color-info: #56bfe0;
   }
 
 }
-

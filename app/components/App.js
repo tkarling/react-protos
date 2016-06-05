@@ -1,21 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.css';
-import React from 'react';
-// import Footer from './Footer';
-// import AddTodo from './AddTodo';
-import ItemListView from './itemList/ItemListView';
+import './App.scss';
 
-// const App = () => (
-//     <div>
-//         <AddTodo />
-//         <VisibleTodoList />
-//         <Footer />
-//     </div>
-// );
+import React, {PropTypes} from 'react';
+import RpNavigation from './shared/RpNavigation';
 
-const App = () => (
+const App = ({children, location}) => (
     <div>
-        <ItemListView />
+        <RpNavigation pathName={location.pathname}/>
+        {children || <div className="welcome">Welcome to React Protos</div>}
     </div>
 );
+
+App.propTypes = {
+    children: PropTypes.object
+};
+
 
 export default App;

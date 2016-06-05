@@ -1,0 +1,4 @@
+.welcome {
+  @import "../app.partial";
+  @include page-indent();
+}

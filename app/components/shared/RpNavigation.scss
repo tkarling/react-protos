@@ -1,0 +1,6 @@
+.rp-navigation {
+  @import "../../app.partial";
+  @include page-indent();
+
+  border-bottom: 1px solid $color-info;
+}

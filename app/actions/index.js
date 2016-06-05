@@ -1,8 +1,9 @@
-let nextItemId = 0;
+import { v4 } from 'node-uuid';
+
 export const addItem = (abbr, text) => {
     return {
         type: 'ADD_ITEM',
-        id: (nextItemId++).toString(),
+        id: v4(),
         abbr,
         text,
     };

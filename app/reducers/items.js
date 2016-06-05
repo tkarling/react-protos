@@ -20,14 +20,14 @@ const item = (state, action) => {
     }
 };
 
-const demoData = [
-    {id: '100', abbr: 'MOI', text: 'Moi vaan', completed: false},
-    {id: '200', abbr: 'HEI', text: 'Hei vaan', completed: false},
-    {id: '300', abbr: 'NIIN', text: 'Niin vaan', completed: false}
-];
+// const demoData = [
+//     {id: '100', abbr: 'MOI', text: 'Moi vaan', completed: false},
+//     {id: '200', abbr: 'HEI', text: 'Hei vaan', completed: false},
+//     {id: '300', abbr: 'NIIN', text: 'Niin vaan', completed: false}
+// ];
 
 
-const items = (state = demoData, action) => {
+const items = (state = [], action) => {
     switch (action.type) {
         case 'ADD_ITEM':
             return [
