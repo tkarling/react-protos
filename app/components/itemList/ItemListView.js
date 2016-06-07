@@ -1,7 +1,7 @@
 import './ItemList.scss';
 
 import { connect } from 'react-redux';
-import { deleteItem } from '../../actions';
+import * as actions from '../../actions';
 import ItemList from './ItemList';
 
 const getItems = (items, filter) => {
@@ -20,9 +20,8 @@ const getItems = (items, filter) => {
 
 const mapStateToProps = (state) => {
     return {
-        items: getItems(state.items
-            // state.visibilityFilter
-        ),
+        items: getItems(state.items),
+        title: 'Table in Local Storage'
     };
 };
 
@@ -34,8 +33,12 @@ const mapDispatchToProps = (dispatch) => {
         },
         onItemDelete: (id) => {
             console.log('onItemDelete');
-            dispatch(deleteItem(id));
+            dispatch(actions.deleteItem(id));
         },
+        onItemAdd: (abbr, text) => {
+            console.log('onItemAdd');
+            dispatch(actions.addItem(abbr, text));
+        }
     };
 };
 

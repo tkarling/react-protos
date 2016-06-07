@@ -4,20 +4,18 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import FontAwesome from 'react-fontawesome/lib';
 
-import {addItem} from '../../actions';
-
-const ItemInput = ({dispatch}) => {
+const ItemInput = ({onItemAdd}) => {
     let text, abbr;
 
-    let onSubmit = e => {
+    const onSubmit = e => {
         e.preventDefault();
         if (!text.value.trim() && !abbr.value.trim()) {
             return;
         }
-        dispatch(addItem(abbr.value, text.value));
+        onItemAdd(abbr.value, text.value);
         abbr.value = '';
         text.value = '';
-    }
+    };
 
     return (
         <div className="rp-add-item">
@@ -37,7 +35,7 @@ const ItemInput = ({dispatch}) => {
 };
 
 ItemInput.propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    onItemAdd: PropTypes.func.isRequired,
 };
 
 export default connect()(ItemInput);

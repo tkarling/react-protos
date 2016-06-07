@@ -4,10 +4,10 @@ import React, {PropTypes} from 'react';
 import Item from './Item';
 import ItemInput from './ItemInput';
 
-const ItemList = ({items, onItemClick, onItemDelete}) => (
+const ItemList = ({items, title, onItemClick, onItemDelete, onItemAdd}) => (
     <div className="rp-item-list">
-        <ItemInput />
-        <h4> Table title</h4>
+        <ItemInput onItemAdd={onItemAdd}/>
+        <h4>{title}</h4>
         <table className="table rp-item-table">
             <tbody>
             {items.map(item =>
@@ -29,8 +29,13 @@ ItemList.propTypes = {
         completed: PropTypes.bool.isRequired,
         text: PropTypes.string.isRequired,
     }).isRequired).isRequired,
+    title: PropTypes.string,
     onItemClick: PropTypes.func.isRequired,
     onItemDelete: PropTypes.func.isRequired,
+};
+
+ItemList.defaultProps = {
+  title: 'Table Title'
 };
 
 export default ItemList;
