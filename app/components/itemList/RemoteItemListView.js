@@ -1,40 +1,77 @@
 import './ItemList.scss';
-
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { deleteItem } from '../../actions';
-import ItemList from './ItemList';
+import * as actions from '../../actions';
 
-const getItems = (items) => {
-    return items;
+import { fetchRItems, getErrorMessage, getIsFetching } from '../../reducers';
+import ItemList from './ItemList';
+import FetchError from './FetchError';
+
+class RemoteItemListView extends Component {
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.filter !== prevProps.filter) {
+    //         this.fetchData();
+    //     }
+    // }
+
+    fetchData() {
+        // const { filter, fetchTodos } = this.props;
+        // fetchTodos(filter);
+        const { fetchRItems } = this.props;
+        fetchRItems();
+    }
+
+    render() {
+        const { isFetching, errorMessage, items, onItemClick, onItemDelete, onItemAdd } = this.props;
+        if (isFetching && !items.length) {
+            return <p>Loading...</p>;
+        }
+        if (errorMessage && !items.length) {
+            return (
+                <FetchError
+                    message={errorMessage}
+                    onRetry={() => this.fetchData()}
+                />
+            );
+        }
+
+        return (
+            <ItemList
+                items={items}
+                onItemClick={onItemClick}
+                onItemDelete={onItemDelete}
+                onItemAdd={onItemAdd}
+            />
+        );
+    }
+}
+
+RemoteItemListView.propTypes = {
+    // filter: PropTypes.oneOf(['all', 'active', 'completed']).isRequired,
+    errorMessage: PropTypes.string,
+    items: PropTypes.array.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    fetchRItems: PropTypes.func.isRequired,
 };
+
 
 const mapStateToProps = (state) => {
     return {
-        items: [], // getItems(state.items),
+        isFetching: getIsFetching(state),
+        errorMessage: getErrorMessage(state),
+        items: fetchRItems(state),
         title: 'Table in Remote Storage'
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onItemClick: (id) => {
-            console.log('Remote: onItemClick');
-            // dispatch(toggleTodo(id));
-        },
-        onItemDelete: (id) => {
-            console.log('Remote: onItemDelete');
-            // dispatch(deleteItem(id));
-        },
-        onItemAdd: (abbr, text) => {
-            console.log('Remote: onItemAdd');
-            // dispatch(addItem(abbr, text));
-        }
-    };
-};
 
-const RemoteItemListView = connect(
+RemoteItemListView = connect(
     mapStateToProps,
-    mapDispatchToProps
-)(ItemList);
+    actions
+)(RemoteItemListView);
 
 export default RemoteItemListView;
